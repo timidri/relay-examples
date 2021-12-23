@@ -1,0 +1,43 @@
+# filename: test-metadata.yaml
+# uses the relaysh/powershell-step-run as an exanple of the local workflow
+
+# map of connections, named '<type>/<name>'
+
+connections:
+  ssh/test:
+    sshKey: |
+      -----BEGIN OPENSSH PRIVATE KEY-----
+      ... key contents ...
+      -----END OPENSSH PRIVATE KEY-----
+
+# secrets
+secrets:
+  mySecret: mySecretValue
+
+
+# now the data to be fed into pseudo-run 1 of this workflow
+runs:
+  '1':      # quoted string, not numeric! thanks YAML
+    steps:
+      inline:
+        # the `spec` keys match what you'd see in a real workflow
+        spec:
+          input1: inputValue
+          secret: ${secrets.mySecret}
+          script: |
+            Write-Host $(Relay-Interface get -p '{ .input1 }')
+            Write-Host $(Relay-Interface get -p '{ .secret }')
+      fromurl:
+        # the `spec` keys match what you'd see in a real workflow
+        spec:
+          input1: inputValue
+          secret: ${secrets.mySecret}
+          scriptUrl: https://raw.githubusercontent.com/timidri/relay-examples/main/powershell/sample.ps1
+      fromgit:
+        # the `spec` keys match what you'd see in a real workflow
+        spec:
+          input1: inputValue
+          secret: ${secrets.mySecret}
+          git:
+            connection: ${connections.ssh.test}
+            repository: git@github.com:orgname/reponame
