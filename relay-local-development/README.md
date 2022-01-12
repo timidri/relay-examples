@@ -1,6 +1,6 @@
 # Local development with Relay
 
-This readme describes the process how to setup local development. You can use this workflow:
+This readme describes the process how to set up local development with a Relay step. You can use this workflow:
 
 - for step development
 - for content development intended to be run by an existing Relay step.
@@ -11,7 +11,7 @@ The below step by step guide assumes you want do develop a Powershell script whi
 
 1. Install the Relay CLI for your OS from the [Github release page](https://github.com/puppetlabs/relay/releases).
 1. Create a [metadata](test-metadata.yaml) file for the the step you want to run locally. Use the [test-metadata.yaml](test-metadata.yaml) as an example. Refer to documentation [here](https://relay.sh/docs/developers/step-authoring/).
-The metadata file specifics the context for the step to run which would normally be provided by a Relay workflow.
+The metadata file specifies the context for the step to run which would normally be provided by a Relay workflow.
 
 The example metadata file conains the following sections:
 
