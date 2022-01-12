@@ -21,7 +21,7 @@ The example metadata file conains the following sections:
 
 ## Running the step using the metadata
 
-1. Spin up a local metadata service by for step `inline` running
+1. Spin up a local metadata service for the step called `inline` running
 
    ```bash
    relay dev metadata --input test-metadata.yaml --run 1 --step inline --debug
